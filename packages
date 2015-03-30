@@ -1,1 +1,1 @@
-kmod-batman-adv fastd config-mode alfred ebtables 
+kmod-batman-adv-legacy fastd config-mode alfred ebtables crda 
