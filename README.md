@@ -7,4 +7,4 @@ Image-Builder configuration for Freifunk-KBU using OpenWRT 14.07
  
 Notes 
 * repositories.conf has URLs according to ar71xx - change them if needed.
-* Output-Directory is ./sdk/bin/PLATFORM
+* Output-Directory is <code>./sdk/bin/PLATFORM</code>
