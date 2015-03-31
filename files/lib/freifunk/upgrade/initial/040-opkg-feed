@@ -10,6 +10,6 @@ src/gz barrier_breaker_management http://downloads.openwrt.org/barrier_breaker/1
 src/gz barrier_breaker_routing http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/packages/routing
 src/gz barrier_breaker_telephony http://downloads.openwrt.org/barrier_breaker/14.07/ar71xx/generic/packages/telephony
 
-src/gz ff-kbu-v6 http://jenkins-v6.kbu.freifunk.net/files/packages/$version
+src/gz ff-wifi-frankfurt http://jenkins.ffm.freifunk.net/files/packages-14.07/ar71xx/
 EOF
 cat /etc/opkg.conf.default >> /etc/opkg.conf

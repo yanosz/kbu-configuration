@@ -9,29 +9,8 @@ local wan_ifname="$(uci get network.wan.ifname)"
 local main_mac="$(get_main_address)"
 
 uci -q batch <<EOF
-delete network.lan
-delete network.wan6
-
-set network.wan='interface'
-set network.wan.type='bridge'
-set network.wan.proto='dhcp'
-set network.wan.accept_ra='0'
-set network.wan.auto='1'
-
 set network.freifunk='interface'
-EOF
 
-# Falls kein WAN-Interface vorhanden, nutze einziges LAN-Interface
-if [ -z "$wan_ifname" ]
-then		
-		uci set network.freifunk.ifname="bat0"
-		uci set network.wan.ifname="$lan_ifname"
-else
-		uci set network.freifunk.ifname="$lan_ifname bat0"
-fi
-
-
-uci -q batch <<EOF
 set network.bat0='interface'
 set network.bat0.proto='none'
 set network.bat0.ifname='bat0'
@@ -40,7 +19,6 @@ set network.bat0.macaddr='${main_mac}'
 set network.freifunk.type='bridge'
 set network.freifunk.proto='none'
 set network.freifunk.auto='1'
-set network.freifunk.accept_ra='1'
 set network.freifunk.dns='fdd3:5d16:b5dd::2'
 
 set network.mesh='interface'

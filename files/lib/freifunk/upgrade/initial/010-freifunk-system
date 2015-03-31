@@ -5,40 +5,17 @@
 . /lib/ar71xx.sh
 . /lib/freifunk/lib_node.sh
 
-board="$(ar71xx_board_name)"
-
-case "$board" in
-tl-wdr3600|\
-tl-wdr4300)
-	uci -q batch <<EOF
-		set system.led_wlan2g.trigger='netdev'
-		set system.led_wlan2g.dev='wlan0'
-		set system.led_wlan2g.mode='link'
-
-		set system.led_wlan5='led'
-		set system.led_wlan5.name='WLAN5'
-		set system.led_wlan5.sysfs='ath9k-phy1'
-		set system.led_wlan5.trigger='netdev'
-		set system.led_wlan5.dev='wlan1'
-		set system.led_wlan5.mode='link'
-EOF
-	;;
-*)
-	uci -q batch <<EOF
-		set system.led_wlan.trigger='netdev'
-		set system.led_wlan.dev='wlan0'
-		set system.led_wlan.mode='link'
-EOF
-	;;
-esac
-
 sysname="$(uci get system.@system[0].hostname)"
-if [ $sysname == "OpenWrt" ] 
-then uci -q batch <<EOF
+uci -q batch <<EOF
 	set system.@system[0].hostname="$(get_node_id)"
 	set system.@system[0].timezone='CET-1CEST,M3.5.0,M10.5.0/3'
 	set freifunk.@node[0].nodeid="$(get_node_id)"
+	delete system.ntp.server
+	system.ntp.server='2a01:4f8:d13:4a85::2'
+	system.ntp.server='2a00:1828:2000:115::2'
+	system.ntp.server='2001:638:504:2000::33'
+	system.ntp.server='2a01:4f8:121:4e4:1:2:3:4'	
 	commit system
 	commit freifunk
 EOF
-fi
+
