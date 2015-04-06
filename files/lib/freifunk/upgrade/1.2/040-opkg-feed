@@ -1,7 +1,0 @@
-#!/bin/sh
-version=$(cat /etc/freifunk_version)
-
-cat > /etc/opkg.conf <<EOF 
-  src/gz ff-kbu-v6 http://jenkins-v6.kbu.freifunk.net/files/packages/$version
-EOF
-cat /etc/opkg.conf.default >> /etc/opkg.conf

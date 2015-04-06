@@ -1,2 +1,7 @@
 #!/bin/sh
 
+# Disable telnet for obvious reasons
+#/etc/init.d/telnet disable
+#/etc/init.d/telnet stop
+
+

@@ -1,1 +1,2 @@
-kmod-batman-adv batctl fastd config-mode alfred ebtables crda luci-mod-admin-full uhttpd luci-theme-bootstrap luci-i18n-english luci-i18n-german luci-proto-ipv6 luci-proto-ppp tinyproxy 
+kmod-batman-adv batctl uhttpd alfred luci-mod-admin-full ebtables fastd tc crda haveged ip luci olsrd -ppp -ppp-mod-pppoe -wpad-mini
+
