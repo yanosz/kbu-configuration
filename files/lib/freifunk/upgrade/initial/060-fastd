@@ -1,0 +1,15 @@
+#!/bin/sh
+
+local wan_ifname="$(uci get network.wan.ifname)"
+
+# Falls kein WAN-Interface vorhanden, nutze einziges LAN-Interface
+if [ -z "$wan_ifname" ]
+then
+	uci set fastd.mesh_vpn.bind='any:10000 interface "br-wan"'
+	uci commit fastd
+else
+	
+fi
+
+
+
