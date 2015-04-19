@@ -1,2 +1,2 @@
-kmod-batman-adv batctl uhttpd alfred luci-mod-admin-full ebtables fastd tc crda haveged ip luci olsrd -ppp -ppp-mod-pppoe -wpad-mini
+kmod-batman-adv  hostapd-common batctl uhttpd luci alfred config-mode ebtables fastd tc kmod-mac80211 kmod-lib80211  crda haveged ip libiwinfo-lua -ppp -ppp-mod-pppoe  
 

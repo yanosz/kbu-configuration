@@ -3,45 +3,13 @@
 uci -q batch <<EOF
 	set firewall.@defaults[0].input=REJECT
         add firewall zone
-        add firewall zone
+	
 	set firewall.@zone[-1].forward=REJECT
-        set firewall.@zone[-1].input=REJECT
-        set firewall.@zone[-1].mtu_fix=1
+        set firewall.@zone[-1].input=ACCEPT
         set firewall.@zone[-1].name=Freifunk
         set firewall.@zone[-1].network=freifunk
         set firewall.@zone[-1].output=ACCEPT
         
-        
-        set firewall.@zone[-2].forward=REJECT
-        set firewall.@zone[-2].input=REJECT
-        set firewall.@zone[-2].mtu_fix=1
-        set firewall.@zone[-2].name=VPN_Out
-        set firewall.@zone[-2].network=VPN_Out
-        set firewall.@zone[-2].output=ACCEPT
-	set firewall.@zone[-1].network=vpn tun0
-	set firewall.@zone[-2].masq=1
-
-
-	add firewall forwarding
-	firewall.@forwarding[-1].src=freifunk
-	firewall.@forwarding[-1].dest=VPN_Out
-           
-        commit firewall
-	
-	add firewall rule
-	add firewall rule
-	
-	firewall.@rule[-1].name=Allow-ICMP (Freifunk) 
-	firewall.@rule[-1].src='freifunk'
-	firewall.@rule[-1].proto='icmp'
-	firewall.@rule[-1].family 'ipv4'
-	firewall.@rule[-1].target='ACCEPT' 
-
-        firewall.@rule[-2].name=Allow-ICMP (VPN_Out) 
-        firewall.@rule[-2].src='VPN_out'
-        firewall.@rule[-2].proto='icmp'
-        firewall.@rule[-2].family 'ipv4'
-        firewall.@rule[-2].target='ACCEPT' 
- 
+	commit firewall
 EOF
 
