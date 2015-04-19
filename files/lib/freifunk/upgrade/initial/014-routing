@@ -1,0 +1,40 @@
+#!/bin/sh
+
+uci -m import network  <<EOF
+package network
+
+config rule6
+	option src '2001:67c:20a0:b100::/56'
+	option lookup '100'
+
+config rule6
+        option src '2a03:2260:1004::/48'
+        option lookup '100'
+
+config rule
+	option src '10.158.0.0/15'
+	option lookup '100'
+
+config rule6
+	option src 'fdd3:5d16:b5dd::/48'
+	option lookup '100'
+
+config route6
+	option interface 'freifunk'
+	option table '100'
+	option target '0::/0'
+	option gateway 'fe80::1'
+	option metric '2024'
+
+config route6
+	option interface 'freifunk'
+	option table '100'
+	option target '0::/0'
+	option gateway 'fe80::2'
+	option metric '2025'
+EOF
+
+
+
+uci commit network
+/etc/init.d/network restart
