@@ -1,0 +1,2 @@
+rule MULTICAST_OUT --log-level error --log --log-ip6 -j CONTINUE
+

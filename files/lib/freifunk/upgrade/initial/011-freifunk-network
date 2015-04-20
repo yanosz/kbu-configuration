@@ -51,6 +51,9 @@ set network.mesh_vpn.mesh='bat0'
 
 EOF
 
+#Fix Lost ND-packets in br-freifunk due to multicast snooping
+uci set network.freifunk.igmp_snooping="0"
+
 
 local mainaddr=$(get_main_address)
 local oIFS="$IFS"; IFS=":"; set -- $mainaddr; IFS="$oIFS"
