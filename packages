@@ -1,2 +1,2 @@
-kmod-batman-adv mdns fastd tc config-mode ebtables kmod-ebtables-ipv4 kmod-ebtables-ipv6  hostapd-common batctl uhttpd luci alfred crda haveged ip libiwinfo-lua -ppp -ppp-mod-pppoe  
+kmod-batman-adv collectd collectd-mod-iwinfo collectd-mod-network  collectd-mod-ping tc config-mode ebtables kmod-ebtables-ipv4 kmod-ebtables-ipv6  hostapd-common batctl uhttpd luci alfred crda haveged ip libiwinfo-lua -ppp -ppp-mod-pppoe  
 
