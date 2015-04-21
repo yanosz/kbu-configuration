@@ -11,10 +11,13 @@ uci -q batch <<EOF
 	set system.@system[0].timezone='CET-1CEST,M3.5.0,M10.5.0/3'
 	set freifunk.@node[0].nodeid="$(get_node_id)"
 	delete system.ntp.server
-	system.ntp.server='2a01:4f8:d13:4a85::2'
-	system.ntp.server='2a00:1828:2000:115::2'
-	system.ntp.server='2001:638:504:2000::33'
-	system.ntp.server='2a01:4f8:121:4e4:1:2:3:4'	
+	add_list system.ntp.server='2a01:4f8:d13:4a85::2'
+	add_list system.ntp.server='2a00:1828:2000:115::2'
+	add_list system.ntp.server='1.openwrt.pool.ntp.org'
+	add_list system.ntp.server='2.openwrt.pool.ntp.org'
+	add_list system.ntp.server='1.ntp.kbu.freifunk.net'
+	add_list system.ntp.server='2.ntp.kbu.freifunk.net'	
+
 	commit system
 	commit freifunk
 EOF
